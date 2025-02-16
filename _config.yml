@@ -39,7 +39,7 @@ paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
-  - _pages
+  # - _pages
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -81,7 +81,7 @@ author:
     #   url: "https://instagram.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/robertochello/"
+      url: "https://www.linkedin.com/in/robertochello"
 
 footer:
   links:
@@ -96,27 +96,34 @@ footer:
     #   url: "https://instagram.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/robertochello/"
+      url: "https://www.linkedin.com/in/robertochello"
 
 defaults:
+  # _home
+  - scope:
+      path: "index.html"
+      author_profile: true
+      header: 
+        overlay_image: /assets/images/bio-photo.jpg
+        overlay_filter: 0.5
   # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
+  # - scope:
+  #     path: ""
+  #     type: posts
+  #   values:
+  #     layout: single
+  #     author_profile: true
+  #     read_time: true
+  #     comments: true
+  #     share: true
+  #     related: true
   # _pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
+  # - scope:
+  #     path: "_pages"
+  #     type: pages
+  #   values:
+  #     layout: single
+  #     author_profile: true
 
 category_archive:
   type: liquid
