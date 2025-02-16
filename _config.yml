@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Roberto Chello
 title_separator: "|"
-subtitle: "Version 2.0"
+subtitle: "Version 1.0"
 email: robertochello@gmail.com
 url: "https://robertochello.github.io"
 baseurl: ""
