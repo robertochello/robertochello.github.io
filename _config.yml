@@ -124,6 +124,17 @@ defaults:
   #   values:
   #     layout: single
   #     author_profile: true
+  # Default per i file della collection "repositories"
+  - scope:
+      path: ""
+      type: repositories
+    values:
+      layout: repository
+      author_profile: false
+      share: true
+      header:
+        teaser: /assets/images/placeholder.jpg
+
 
 category_archive:
   type: liquid
@@ -131,3 +142,10 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+
+# Definizione della collection "repositories"
+collections:
+  repositories:
+    output: true
+    permalink: /repositories/:path/
