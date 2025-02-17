@@ -101,7 +101,7 @@ defaults:
     values:
       author_profile: true
       header: 
-        overlay_image: /assets/images/bio-photo.jpg
+        overlay_image: /assets/images/Photo_CV.jpg
         overlay_filter: 0.5
   # Default per i file della collection "repositories"
   - scope:
@@ -112,7 +112,7 @@ defaults:
       author_profile: false
       share: true
       header:
-        teaser: /assets/images/placeholder.jpg
+        teaser: "/assets/images/Photo_CV.jpg"
 
 category_archive:
   type: liquid
