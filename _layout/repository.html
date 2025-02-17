@@ -5,7 +5,7 @@ layout: single
 {% if page.repolink %}
 {% capture repolink %}{{ page.repolink }}{% endcapture %}
 {% else %}
-{% capture repolink %}https://github.com/{{github_username}}/{{ page.reponame }}{% endcapture %}
+{% capture repolink %}https://github.com/{{site.github_username}}/{{ page.reponame }}{% endcapture %}
 {% endif %}
 
 {% if page.repodoc %}
@@ -14,7 +14,7 @@ layout: single
     {% if jekyll.environment == "production" %}
         {% capture repodoc %}/{{page.reponame}}/{% endcapture %}
     {% else %}
-        {% capture repodoc %}https://{{github_username}}.github.io/{{page.reponame}}/{% endcapture %}
+        {% capture repodoc %}https://{{site.github_username}}.github.io/{{page.reponame}}/{% endcapture %}
     {% endif %}
 {% endif %}
 
