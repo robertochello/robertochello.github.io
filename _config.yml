@@ -29,7 +29,7 @@ description: >-
   Google search results) and in your feed.xml site description.
 # twitter_username: username
 github_username: robertochello
-minimal_mistakes_skin: "dark"
+minimal_mistakes_skin: dark
 search: true
 
 # Build settings
