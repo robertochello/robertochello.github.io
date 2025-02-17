@@ -1,42 +1,46 @@
-# =============================================================================
-# HEADER: Impostazioni globali del sito
-# =============================================================================
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-# Titolo e informazioni di base del sito
-title: Roberto Chello                        # Titolo principale del sito (viene mostrato nell'header e nel titolo della pagina)
-title_separator: "|"                          # Separatore usato tra titolo e sottotitolo nei titoli delle pagine
-subtitle: "Version 1.0"                       # Sottotitolo, utile per mostrare una versione o un claim
-email: robertochello@gmail.com                # Email di contatto (potrebbe essere usata per meta tag o link "mailto:")
-url: "https://robertochello.github.io"         # URL completo del sito
-baseurl: ""                                   # Base URL se il sito non è pubblicato alla root (lascia vuoto per GitHub Pages root)
-repository: "robertochello/robertochello.github.io"  # Repository GitHub dove è ospitato il sito
-description: >-                              # Descrizione del sito (utilizzata per SEO e meta tag)
+# Site settings
+title: Roberto Chello
+title_separator: "|"
+subtitle: "Version 1.0"
+email: robertochello@gmail.com
+url: "https://robertochello.github.io"
+baseurl: ""
+repository: "robertochello/robertochello.github.io"
+description: >-
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-# twitter_username: username                 # (Opzionale) Nome utente Twitter; decommenta e modifica se necessario
-github_username: robertochello                 # Nome utente GitHub
-minimal_mistakes_skin: "dark"                  # Tema visivo scelto (es. "dark", "default", "air", "contrast", ecc.)
-search: true                                  # Abilita la funzionalità di ricerca nel sito
+# twitter_username: username
+github_username: robertochello
+minimal_mistakes_skin: "dark"
+search: true
 
-# =============================================================================
-# BODY: Impostazioni di build, layout, collezioni e contenuti
-# =============================================================================
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+# Outputting
+permalink: /:categories/:title/
+paginate: 0 # amount of posts to show
+paginate_path: /page:num/
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
-# Impostazioni di build e output
-markdown: kramdown                           # Specifica il parser Markdown da usare (kramdown è il predefinito di Jekyll)
-remote_theme: mmistakes/minimal-mistakes       # Tema remoto usato; qui viene utilizzato il tema Minimal Mistakes
-permalink: /:categories/:title/               # Struttura degli URL (permalink) per le pagine; usa categorie e titolo
-paginate: 0                                  # Numero di post per pagina; 0 significa paginazione disabilitata (modifica per abilitare)
-paginate_path: /page:num/                      # Percorso usato per le pagine di paginazione
-timezone:                                    # Imposta il fuso orario (modifica inserendo ad esempio "Europe/Rome")
-
-# Includere cartelle o file specifici nel build (non elaborati automaticamente)
 include:
-  # - _pages                                # Decommenta se hai una cartella "_pages" da includere
-  - _repositories                           # Cartella contenente i file delle repository (decommenta se necessario)                        
+  # - _pages
+  - _repositories
 
-# Escludere file o cartelle dal build (queste righe sono commentate per impostazione predefinita)
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
 # exclude:
 #   - Gemfile
 #   - Gemfile.lock
@@ -46,67 +50,23 @@ include:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-# Plugin utilizzati per estendere le funzionalità di Jekyll
+# Plugins (previously gems:)
 plugins:
-  - jekyll-paginate                         # Plugin per la paginazione dei post
-  - jekyll-sitemap                          # Genera automaticamente una sitemap per il sito
-  - jekyll-gist                             # Permette di includere Gist di GitHub nei post
-  - jekyll-feed                             # Genera automaticamente il feed RSS del sito
-  - jemoji                                  # Consente l'uso di emoji nei post
-  - jekyll-include-cache                    # Migliora le performance cache dei file inclusi
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
 
-# Impostazioni predefinite per le pagine e collezioni (template e layout)
-defaults:
-  # ---------------------------
-  # Homepage (index.html)
-  # ---------------------------
-  - scope:
-      path: "index.html"                     # Applica solo al file index.html
-    values:
-      author_profile: true                   # Mostra il profilo dell'autore nella homepage
-      header:
-        overlay_image: ""  # Immagine di sfondo nell'header della homepage
-        overlay_filter: 0.5                  # Filtro di trasparenza applicato all'immagine di overlay (0.5 = 50%)
-
-  # ---------------------------
-  # Collection "repositories"
-  # ---------------------------
-  - scope:
-      path: ""                               # Applica a tutti i file
-      type: repositories                     # Solo per i file della collection "repositories"
-    values:
-      layout: repository                     # Layout da usare per le repository (deve essere definito nel tema)
-      author_profile: false                  # Non mostra il profilo dell'autore per queste pagine
-      share: true                            # Abilita pulsanti di condivisione sui social
-      header:
-        teaser: ""                           # Immagine di anteprima per l'header; se vuoto, potrai specificarne una per ogni file
-
-# Impostazioni per gli archivi (archivio delle categorie, tag e repository)
-category_archive:
-  type: liquid                               # Tipo di template usato per l'archivio delle categorie
-  path: /categories/                         # URL dove si trova l'archivio delle categorie
-
-tag_archive:
-  type: liquid                               # Tipo di template per l'archivio dei tag
-  path: /tags/                               # URL per l'archivio dei tag
-
-repositories_archive:
-  type: liquid                               # Tipo di template per l'archivio delle repository
-  path: /repositories/                       # URL dove si troverà l'elenco delle repository
-
-# Definizione della collection "repositories"
-collections:
-  repositories:
-    output: true                             # Indica a Jekyll di generare pagine HTML per ogni elemento della collection
-    permalink: /repositories/:path/          # Definisce la struttura degli URL per gli elementi della collection; :path corrisponde al nome del file
-
-# =============================================================================
-# FOOTER: Informazioni e link che appaiono nel footer del sito
-# =============================================================================
-
-footer:
+author:
+  name: "Roberto Chello"
+  avatar: "/assets/images/Photo_CV.jpg"
+  bio: "Passionate about AI, automation, and robotics. I enjoy solving complex problems and developing efficient, real-world solutions in robotics and computer engineering. Open to new challenges."
   links:
-    # Esempi di link (decommenta e modifica per aggiungere altri link)
+    # - label: "Website"
+    #   icon: "fas fa-fw fa-link"
+    #   url: "https://"
     # - label: "Twitter"
     #   icon: "fab fa-fw fa-twitter-square"
     #   url: "https://twitter.com/"
@@ -119,3 +79,54 @@ footer:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/robertochello"
+
+footer:
+  links:
+    # - label: "Twitter"
+    #   icon: "fab fa-fw fa-twitter-square"
+    #   url: "https://twitter.com/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/robertochello"
+    # - label: "Instagram"
+    #   icon: "fab fa-fw fa-instagram"
+    #   url: "https://instagram.com/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/robertochello"
+
+defaults:
+  # Default per la homepage (_home)
+  - scope:
+      path: "index.html"
+    values:
+      author_profile: true
+      header: 
+        overlay_image: /assets/images/header.jpg
+        overlay_filter: 0.5
+  # Default per i file della collection "repositories"
+  - scope:
+      path: ""
+      type: repositories
+    values:
+      layout: repository
+      author_profile: false
+      share: true
+      header:
+        teaser: ""
+
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+repositories_archive:
+  type: liquid
+  path: /repositories/
+
+# Definizione della collection "repositories"
+collections:
+  repositories:
+    output: true
+    permalink: /repositories/:path/
