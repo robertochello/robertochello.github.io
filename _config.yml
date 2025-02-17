@@ -18,7 +18,7 @@ compress_html:
 # Site settings
 title: Roberto Chello
 title_separator: "|"
-subtitle: "Version 1.0"
+subtitle: ""
 email: robertochello@gmail.com
 url: "https://robertochello.github.io"
 baseurl: ""
