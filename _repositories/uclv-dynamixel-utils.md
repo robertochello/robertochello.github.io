@@ -1,4 +1,4 @@
 ---
-title: uclv-dynamixel-utils
+title: Dynamixel Utils
 reponame: uclv-dynamixel-utils
 ---
