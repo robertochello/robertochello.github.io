@@ -8,6 +8,13 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development  # disable compression in dev environment
+
+
 # Site settings
 title: Roberto Chello
 title_separator: "|"
@@ -36,7 +43,6 @@ timezone: Europe/Rome # https://en.wikipedia.org/wiki/List_of_tz_database_time_z
 
 include:
   - _pages
-  # - _repositories
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -115,7 +121,7 @@ defaults:
       layout: single
       author_profile: true
       header:
-        overlay_image: /assets/images/moon-earth.jpg
+        overlay_image: /assets/images/header.jpg
   # _repositories
   - scope:
       path: ""
