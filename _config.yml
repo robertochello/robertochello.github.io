@@ -107,6 +107,16 @@ defaults:
         overlay_image: /assets/images/header.jpg
         overlay_filter: 1
   # Default per i file della collection "repositories"
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      header:
+        overlay_image: /assets/images/moon-earth.jpg
+  # _repositories
   - scope:
       path: ""
       type: repositories
@@ -119,8 +129,18 @@ defaults:
 
 
 
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
 repositories_archive:
   type: liquid
   path: /repositories/
-
-
+courses_archive:
+  type: liquid
+  path: /courses/
+awards_archive:
+  type: liquid
+  path: /awards/
