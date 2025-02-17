@@ -9,10 +9,6 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 title: Roberto Chello
 title_separator: "|"
 subtitle: "Version 1.0"
@@ -20,7 +16,7 @@ email: robertochello@gmail.com
 url: "https://robertochello.github.io"
 baseurl: ""
 repository: "robertochello/robertochello.github.io"
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
@@ -63,9 +59,9 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Roberto Chello"
-  avatar : "/assets/images/Photo_CV.jpg"
-  bio    : "Passionate about AI, automation, and robotics. I enjoy solving complex problems and developing efficient, real-world solutions in robotics and computer engineering. Open to new challenges."
+  name: "Roberto Chello"
+  avatar: "/assets/images/Photo_CV.jpg"
+  bio: "Passionate about AI, automation, and robotics. I enjoy solving complex problems and developing efficient, real-world solutions in robotics and computer engineering. Open to new challenges."
   links:
     # - label: "Website"
     #   icon: "fas fa-fw fa-link"
@@ -99,31 +95,14 @@ footer:
       url: "https://www.linkedin.com/in/robertochello"
 
 defaults:
-  # _home
+  # Default per la homepage (_home)
   - scope:
       path: "index.html"
+    values:
       author_profile: true
       header: 
         overlay_image: /assets/images/bio-photo.jpg
         overlay_filter: 0.5
-  # _posts
-  # - scope:
-  #     path: ""
-  #     type: posts
-  #   values:
-  #     layout: single
-  #     author_profile: true
-  #     read_time: true
-  #     comments: true
-  #     share: true
-  #     related: true
-  # _pages
-  # - scope:
-  #     path: "_pages"
-  #     type: pages
-  #   values:
-  #     layout: single
-  #     author_profile: true
   # Default per i file della collection "repositories"
   - scope:
       path: ""
@@ -134,7 +113,6 @@ defaults:
       share: true
       header:
         teaser: /assets/images/placeholder.jpg
-
 
 category_archive:
   type: liquid
