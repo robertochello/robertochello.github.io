@@ -32,23 +32,24 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Europe/Rome # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
-  # - _pages
-  - _repositories
+  - _pages
+  # - _repositories
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
 
 # Plugins (previously gems:)
 plugins:
@@ -63,40 +64,38 @@ author:
   name: "Roberto Chello"
   avatar: "/assets/images/Photo_CV.jpg"
   bio: "Passionate about AI, automation, and robotics. I enjoy solving complex problems and developing efficient, real-world solutions in robotics and computer engineering. Open to new challenges."
+  location: "Italy"
   links:
-    # - label: "Website"
-    #   icon: "fas fa-fw fa-link"
-    #   url: "https://"
-    # - label: "Twitter"
-    #   icon: "fab fa-fw fa-twitter-square"
-    #   url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/robertochello"
-    # - label: "Instagram"
-    #   icon: "fab fa-fw fa-instagram"
-    #   url: "https://instagram.com/"
+    - label: "Mail"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:robertochello@gmail.com"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/robertochello"
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope"
-      url: "mailto:robertochello@gmail.com"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/robertochello"
+    - label: "Currículum Vitae"
+      icon: "fas fa-fw fa-file-pdf"
+      url: "" # CONTROLLARE
+
+
 
 footer:
   links:
-    # - label: "Twitter"
-    #   icon: "fab fa-fw fa-twitter-square"
-    #   url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/robertochello"
-    # - label: "Instagram"
-    #   icon: "fab fa-fw fa-instagram"
-    #   url: "https://instagram.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/robertochello"
+
+
+# Definizione della collection "repositories"
+collections:
+  repositories:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # Default per la homepage (_home)
@@ -106,7 +105,7 @@ defaults:
       author_profile: true
       header: 
         overlay_image: /assets/images/header.jpg
-        overlay_filter: 0.5
+        overlay_filter: 1
   # Default per i file della collection "repositories"
   - scope:
       path: ""
@@ -116,20 +115,12 @@ defaults:
       author_profile: false
       share: true
       header:
-        teaser: ""
+        teaser: http://via.placeholder.com/350
 
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
+
+
 repositories_archive:
   type: liquid
   path: /repositories/
 
-# Definizione della collection "repositories"
-collections:
-  repositories:
-    output: true
-    permalink: /repositories/:path/
+
