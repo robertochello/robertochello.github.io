@@ -34,7 +34,7 @@ timezone:                                    # Imposta il fuso orario (modifica 
 # Includere cartelle o file specifici nel build (non elaborati automaticamente)
 include:
   # - _pages                                # Decommenta se hai una cartella "_pages" da includere
-  - _repositoriy                          # Decommenta se hai una cartella "_repository" da includere
+  - _repositories                           # Cartella contenente i file delle repository (decommenta se necessario)                        
 
 # Escludere file o cartelle dal build (queste righe sono commentate per impostazione predefinita)
 # exclude:
