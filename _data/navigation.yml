@@ -1,4 +1,7 @@
 main:
   - title: "Repositories"
-    description: "Maintained Repositories"
+    description: ""
     url: /repositories/
+  - title: "About"
+    description: ""
+    url: /about/
