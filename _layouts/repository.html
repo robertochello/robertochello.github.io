@@ -3,24 +3,38 @@ layout: single
 ---
 
 {% if page.repolink %}
-{% capture repolink %}{{ page.repolink }}{% endcapture %}
+  {% capture repolink %}{{ page.repolink }}{% endcapture %}
 {% else %}
-{% capture repolink %}https://github.com/{{site.github_username}}/{{ page.reponame }}{% endcapture %}
+  {% capture repolink %}https://github.com/{{site.github_username}}/{{ page.reponame }}{% endcapture %}
 {% endif %}
 
 {% if page.repodoc %}
-    {% capture repodoc %}{{ page.repodoc }}{% endcapture %}
+  {% capture repodoc %}{{ page.repodoc }}{% endcapture %}
 {% else %}
-    {% if jekyll.environment == "production" %}
-        {% capture repodoc %}/{{page.reponame}}/{% endcapture %}
-    {% else %}
-        {% capture repodoc %}https://{{site.github_username}}.github.io/{{page.reponame}}/{% endcapture %}
-    {% endif %}
+  {% if jekyll.environment == "production" %}
+    {% capture repodoc %}/{{page.reponame}}/{% endcapture %}
+  {% else %}
+    {% capture repodoc %}https://{{site.github_username}}.github.io/{{page.reponame}}/{% endcapture %}
+  {% endif %}
 {% endif %}
 
+<div class="container" style="max-width:800px; margin: 0 auto; padding: 20px; text-align: center;">
+  <!-- Intestazione -->
+  <h1 style="font-size:2.5em; margin-bottom:10px;">{{ page.title }}</h1>
+  <p style="font-size:1.2em; color:#555;">Benvenuto nella pagina della repository <strong>{{ page.reponame }}</strong>!</p>
+  
+  <!-- Pulsanti per Repository e Documentazione -->
+  <div style="margin: 30px 0;">
+    <a href="{{ repolink }}" style="display:inline-block; margin: 0 10px; padding: 10px 20px; background-color:#4078c0; color:#fff; text-decoration:none; border-radius:5px;">
+      <i class="fab fa-github" style="margin-right:5px;"></i> Visualizza Repository
+    </a>
+    <a href="{{ repodoc }}" style="display:inline-block; margin: 0 10px; padding: 10px 20px; background-color:#6cc644; color:#fff; text-decoration:none; border-radius:5px;">
+      <i class="fas fa-book" style="margin-right:5px;"></i> Visualizza Documentazione
+    </a>
+  </div>
 
-This is the {{page.reponame}} page!  
-
-</br>
-
-<a href="{{repolink}}">Repo</a>
+  <!-- Contenuto aggiuntivo -->
+  <div class="content" style="text-align:left; margin-top:20px;">
+    {{ content }}
+  </div>
+</div>
