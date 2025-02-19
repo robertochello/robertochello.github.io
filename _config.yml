@@ -86,7 +86,7 @@ author:
       url: "https://github.com/robertochello"
     - label: "Currículum Vitae"
       icon: "fas fa-fw fa-file-pdf"
-      url: "" # CONTROLLARE
+      url: "/assets/cv/RobertoChello_CV_EN.pdf" # CONTROLLARE
 
 
 
