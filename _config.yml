@@ -114,7 +114,7 @@ defaults:
       author_profile: true
       header: 
         overlay_image: /assets/images/header.jpg
-        overlay_filter: 1
+        overlay_filter: 0.5
   # Default per i file della collection "repositories"
   # _pages
   - scope:
