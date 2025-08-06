@@ -1,56 +1,45 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# ---------------------------------------------------------------------
+#  _config.yml – Core build & site parameters
+#  Theme: mmistakes/minimal-mistakes  •  Updated: 2025-08-06
+# ---------------------------------------------------------------------
 
-
+# --- Output optimisation ------------------------------------------------
 compress_html:
-  clippings: all            # Rimuove tutti gli spazi vuoti e tag opzionali dall'HTML generato (massima compressione).
+  clippings: all
   ignore:
-    envs: development       # Non applica la compressione quando Jekyll gira in modalità sviluppo (JEKYLL_ENV=development).
+    envs: development     # readable HTML during local dev
 
+# --- Site identity & SEO meta ------------------------------------------
+name: "Roberto Chello"
+title: "Roberto Chello"
+title_separator: "|"
+subtitle: ""
+email: "robertochello@gmail.com"
+url: "https://robertochello.github.io"
+baseurl: ""
+repository: "robertochello/robertochello.github.io"
+description: >-
+  Portfolio di Roberto Chello, PLC & Automation Engineer: soluzioni di
+  automazione industriale, motion control e process automation, articoli e progetti.
+github_username: "robertochello"
+# twitter_username: ""       # enable if/when required
+minimal_mistakes_skin: "dark"
+search: true
+locale: "en-US"              # switch to "it-IT" for Italian date formats
+breadcrumb: false
 
-
-name: "Roberto Chello"      # Nome del sito o dell'autore principale. Può essere usato in varie parti del tema (es. attributi autore).
-title:        # Titolo del sito, mostrato nell'intestazione e nei titoli delle pagine del browser.
-title_separator: "|"        # Carattere separatore tra titolo del sito e titolo della pagina (qui una barra verticale "|").
-subtitle: ""                # Sottotitolo del sito, attualmente vuoto (opzionale, potresti inserire una breve frase descrittiva se lo desideri).
-email: robertochello@gmail.com   # Email di contatto mostrata nel profilo autore o per contattarti (facoltativo ma utile).
-url: "https://robertochello.github.io"  # URL completo del sito (dominio). Essenziale per generare link assoluti nel sito:contentReference[oaicite:2]{index=2}.
-baseurl: ""                 # Base URL del sito, qui vuoto perché il sito non è in una sottocartella. Lascia vuoto per siti nella root del dominio:contentReference[oaicite:3]{index=3}.
-repository: "robertochello/robertochello.github.io"  # Nome utente/nome repo GitHub (NWO) del sito:contentReference[oaicite:4]{index=4}. Serve ai plugin GitHub (es. dati di `site.github` e link "Modifica su GitHub").
-description: >-            
-  Write an awesome description for your new site here...  
-                        # Descrizione del sito, usata nei meta tag SEO e nel feed RSS:contentReference[oaicite:5]{index=5}. **Da aggiornare**: questo è il testo predefinito, conviene inserirne uno reale.
-# twitter_username: username  # (Opzione commentata) Username Twitter del sito, se impostato verrà usato per le Twitter Cards e meta tag social.
-github_username: robertochello  # Username GitHub associato al sito, usato ad esempio per icone/link social nel tema.
-minimal_mistakes_skin: dark    # Skin del tema Minimal Mistakes in uso:contentReference[oaicite:6]{index=6}. "dark" = palette scura (testo chiaro su sfondo scuro). Altre opzioni: "default", "air", "aqua", "contrast", "dirt", "neon", "mint", "plum", "sunrise".
-search: true                   # Abilita la funzionalità di ricerca interna del tema:contentReference[oaicite:7]{index=7}. Di default usa Lunr.js per indicizzare contenuti di post e collezioni.
-locale: "en-US"                # Imposta la localizzazione per date/ora e formati. "en-US" = inglese (Stati Uniti). Puoi usare "it-IT" per formattazione italiana se il sito è in italiano.
-breadcrumb: false              # Disabilita i link di breadcrumb (navigazione a briciole di pane). Il tema li ha off di default, impostare true li attiverebbe:contentReference[oaicite:8]{index=8}.
-
-
-# Build settings
+# --- Build mechanics ---------------------------------------------------
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
-# Outputting
-permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-timezone: Europe/Rome # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+remote_theme: "mmistakes/minimal-mistakes"
+permalink: "/:categories/:title/"
+paginate: 5
+paginate_path: "/page:num/"
+timezone: "Europe/Rome"
 
-include:
+include:                      # process files in folders starting with “_”
   - _pages
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-exclude:
+exclude:                      # non-deployable assets
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -60,8 +49,7 @@ exclude:
   - vendor/ruby/
   - README.md
 
-# Plugins (previously gems:)
-plugins:
+plugins:                      # GitHub-Pages-approved plug-ins
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -69,54 +57,29 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
-author:
-  name: "Roberto Chello"
-  avatar: "/assets/images/Photo_CV.jpg"
-  bio: "PLC & Automation Engineer" 
-  location: "Italy"
-  links:
-    - label: "Mail"
-      icon: "fas fa-fw fa-envelope"
-      url: "mailto:robertochello@gmail.com"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/robertochello"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/robertochello"
-    - label: "Currículum Vitae"
-      icon: "fas fa-fw fa-file-pdf"
-      url: "/assets/cv/RobertoChello_CV_EN.pdf"
+# ---------------------------------------------------------------------
+#  Author & social data relocated to   _data/author.yml   _data/social.yml
+#  Layouts should now reference         site.data.author.*   site.data.social.*
+# ---------------------------------------------------------------------
 
-
-
-footer:
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/robertochello"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/robertochello"
-
-
-# Definizione della collection "repositories"
+# --- Collections -------------------------------------------------------
 collections:
   repositories:
     output: true
-    permalink: /:collection/:path/
+    permalink: "/:collection/:path/"
 
+# --- Global defaults ---------------------------------------------------
 defaults:
-  # Default per la homepage (_home)
+  # Homepage
   - scope:
       path: "index.html"
     values:
       author_profile: true
-      header: 
-        overlay_image: /assets/images/header.png
+      header:
+        overlay_image: "/assets/images/header.png"
         overlay_filter: 0.5
-  # Default per i file della collection "repositories"
-  # _pages
+
+  # Static pages in /_pages
   - scope:
       path: "_pages"
       type: pages
@@ -124,8 +87,9 @@ defaults:
       layout: single
       author_profile: true
       header:
-        overlay_image: /assets/images/header.jpg
-  # _repositories
+        overlay_image: "/assets/images/header.jpg"
+
+  # Portfolio items (repositories)
   - scope:
       path: ""
       type: repositories
@@ -134,22 +98,25 @@ defaults:
       author_profile: false
       share: true
       header:
-        teaser: http://via.placeholder.com/350
+        teaser: "/assets/images/default_teaser.png"   # fallback; overridable per item
 
-
-
+# --- Archive index pages ----------------------------------------------
 category_archive:
   type: liquid
   path: /categories/
+
 tag_archive:
   type: liquid
   path: /tags/
+
 repositories_archive:
   type: liquid
   path: /repositories/
-courses_archive:
-  type: liquid
-  path: /courses/
-awards_archive:
-  type: liquid
-  path: /awards/
+
+# Future collections (commented until in use)
+# courses_archive:
+#   type: liquid
+#   path: /courses/
+# awards_archive:
+#   type: liquid
+#   path: /awards/
