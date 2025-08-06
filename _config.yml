@@ -72,7 +72,7 @@ plugins:
 author:
   name: "Roberto Chello"
   avatar: "/assets/images/Photo_CV.jpg"
-  bio: "Computer Engineer - Robotics and Automation" 
+  bio: "PLC & Automation Engineer" 
   location: "Italy"
   links:
     - label: "Mail"
@@ -86,7 +86,7 @@ author:
       url: "https://github.com/robertochello"
     - label: "Currículum Vitae"
       icon: "fas fa-fw fa-file-pdf"
-      url: "/assets/cv/RobertoChello_CV_EN.pdf" # CONTROLLARE
+      url: "/assets/cv/RobertoChello_CV_EN.pdf"
 
 
 
