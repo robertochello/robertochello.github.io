@@ -1,45 +1,64 @@
 # ---------------------------------------------------------------------
-#  _config.yml – Core build & site parameters
-#  Theme: mmistakes/minimal-mistakes  •  Updated: 2025-08-06
+#  _config.yml  –  Configurazione principale del sito Jekyll
+#  Tema: mmistakes/minimal-mistakes
+#  Repository: https://github.com/robertochello/robertochello.github.io
+# ---------------------------------------------------------------------
+#  Per modifiche frequenti a contenuti variabili considera l’uso dei
+#  *data files* (“_data/*.yml”), in modo da mantenere questo file pulito.
 # ---------------------------------------------------------------------
 
-# --- Output optimisation ------------------------------------------------
+# ---------------------------------------------------------------------
+# Minificazione HTML (compress_html)
+#   • Riduce la dimensione del markup in produzione.
+#   • Disattivata in sviluppo (JEKYLL_ENV=development) per facilitare
+#     il debug del codice generato.
+# ---------------------------------------------------------------------
 compress_html:
-  clippings: all
+  clippings: all                # Massima compressione: rimuove spazi, CR/LF, commenti, tag opzionali
   ignore:
-    envs: development     # readable HTML during local dev
+    envs: development           # Nessuna compressione quando si fa `bundle exec jekyll serve`
 
-# --- Site identity & SEO meta ------------------------------------------
-name: "Roberto Chello"
-title: "Roberto Chello"
-title_separator: "|"
-subtitle: ""
-email: "robertochello@gmail.com"
-url: "https://robertochello.github.io"
-baseurl: ""
-repository: "robertochello/robertochello.github.io"
+# ---------------------------------------------------------------------
+# Site settings – Identità e meta-informazioni del sito
+# ---------------------------------------------------------------------
+name: "Roberto Chello"          # Nome dell’autore/proprietario del sito
+title: "Roberto Chello"         # Titolo visualizzato nei tag <title>
+title_separator: "|"            # Separatore tra titolo pagina e titolo sito
+subtitle: ""                    # Sottotitolo opzionale (lasciato vuoto)
+email: "robertochello@gmail.com"  # Email di contatto
+url: "https://robertochello.github.io" # Dominio (necessario per feed e sitemap)
+baseurl: ""                     # Sottocartella (vuota perché il sito è nella root del dominio GitHub Pages)
+repository: "robertochello/robertochello.github.io" # NWO GitHub (abilita tag site.github)
 description: >-
-  Portfolio di Roberto Chello, PLC & Automation Engineer: soluzioni di
-  automazione industriale, motion control e process automation, articoli e progetti.
-github_username: "robertochello"
-# twitter_username: ""       # enable if/when required
-minimal_mistakes_skin: "dark"
-search: true
-locale: "en-US"              # switch to "it-IT" for Italian date formats
-breadcrumb: false
+  Portfolio di Roberto Chello, PLC & Automation Engineer: soluzioni di automazione industriale, motion control e process automation, articoli e progetti.
+github_username: "robertochello"  # Usato da plugin social e include
+# twitter_username: ""            # Definire se si vogliono Twitter Cards
+minimal_mistakes_skin: "dark"     # Tema “dark” (palette scura) di Minimal Mistakes
+search: true                      # Abilita ricerca Lunr.js integrata
+locale: "en-US"                   # Formato locale per date (cambiare in "it-IT" se necessario)
+breadcrumb: false                 # Navigazione breadcrumb disattivata
 
-# --- Build mechanics ---------------------------------------------------
-markdown: kramdown
-remote_theme: "mmistakes/minimal-mistakes"
-permalink: "/:categories/:title/"
-paginate: 5
-paginate_path: "/page:num/"
-timezone: "Europe/Rome"
+# ---------------------------------------------------------------------
+# Build settings – Parser, tema remoto, URL e paginazione
+# ---------------------------------------------------------------------
+markdown: kramdown                # Parser Markdown predefinito di Jekyll
+remote_theme: "mmistakes/minimal-mistakes" # Tema remoto caricato via GitHub
+permalink: "/:categories/:title/" # Struttura URL (categorie + titolo)
+paginate: 5                       # Post per pagina negli elenchi paginati
+paginate_path: "/page:num/"       # Percorso pagine successive (page2, page3,…)
+timezone: "Europe/Rome"           # Time-zone locale per date/ora generate
 
-include:                      # process files in folders starting with “_”
-  - _pages
+# ---------------------------------------------------------------------
+# Contenuti da includere anche se in cartelle che iniziano con “_”
+# (per convenzione Jekyll le ignora se non espressamente incluse).
+# ---------------------------------------------------------------------
+include:
+  - _pages                        # Pagine statiche organizzate in /_pages
 
-exclude:                      # non-deployable assets
+# ---------------------------------------------------------------------
+# File e directory da escludere dalla build (non copiati nel sito finale)
+# ---------------------------------------------------------------------
+exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -49,26 +68,60 @@ exclude:                      # non-deployable assets
   - vendor/ruby/
   - README.md
 
-plugins:                      # GitHub-Pages-approved plug-ins
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
+# ---------------------------------------------------------------------
+# Plugin whitelisted per GitHub Pages
+# ---------------------------------------------------------------------
+plugins:
+  - jekyll-paginate               # Paginazione standard
+  - jekyll-sitemap                # Generazione automatica sitemap.xml
+  - jekyll-gist                   # Embed di GitHub Gist via tag Liquid
+  - jekyll-feed                   # Feed Atom/RSS
+  - jemoji                        # Supporto emoji :nome:
+  - jekyll-include-cache          # Cache degli include per performance
 
 # ---------------------------------------------------------------------
-#  Author & social data relocated to   _data/author.yml   _data/social.yml
-#  Layouts should now reference         site.data.author.*   site.data.social.*
+# Profilo autore – mostrato nelle pagine con author_profile: true
 # ---------------------------------------------------------------------
+author:
+  name: "Roberto Chello"
+  avatar: "/assets/images/Photo_CV.jpg"     # Immagine profilo  (≥200×200 px consigliati)
+  bio: "PLC & Automation Engineer"
+  location: "Italy"
+  links:                                     # Link social/contatto con icone FontAwesome
+    - label: "Mail"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:robertochello@gmail.com"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/robertochello"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/robertochello"
+    - label: "Currículum Vitae"
+      icon: "fas fa-fw fa-file-pdf"
+      url: "/assets/cv/RobertoChello_CV_EN.pdf"
 
-# --- Collections -------------------------------------------------------
+# Link social nel footer (visibili in tutte le pagine)
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/robertochello"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/robertochello"
+
+# ---------------------------------------------------------------------
+# Collezioni personalizzate – “repositories” (portfolio progetti)
+# ---------------------------------------------------------------------
 collections:
   repositories:
-    output: true
-    permalink: "/:collection/:path/"
+    output: true                   # Genera una pagina per ogni documento
+    permalink: "/:collection/:path/" # URL es. /repositories/nome-progetto/
 
-# --- Global defaults ---------------------------------------------------
+# ---------------------------------------------------------------------
+# Defaults – Valori front-matter automatici per gruppi di file/pagine
+# ---------------------------------------------------------------------
 defaults:
   # Homepage
   - scope:
@@ -76,10 +129,10 @@ defaults:
     values:
       author_profile: true
       header:
-        overlay_image: "/assets/images/header.png"
-        overlay_filter: 0.5
+        overlay_image: "/assets/images/header.png" # Immagine testata home
+        overlay_filter: 0.5                        # Oscuramento 50 %
 
-  # Static pages in /_pages
+  # Pagine statiche in /_pages
   - scope:
       path: "_pages"
       type: pages
@@ -87,33 +140,37 @@ defaults:
       layout: single
       author_profile: true
       header:
-        overlay_image: "/assets/images/header.jpg"
+        overlay_image: "/assets/images/header.jpg" # Immagine testata pagine
 
-  # Portfolio items (repositories)
+  # Collezione repositories
   - scope:
       path: ""
       type: repositories
     values:
-      layout: repository
-      author_profile: false
-      share: true
+      layout: repository            # Layout personalizzato (creare _layouts/repository.html)
+      author_profile: false         # Nasconde riquadro autore nei progetti
+      share: true                   # Pulsanti condivisione social
       header:
-        teaser: "/assets/images/default_teaser.png"   # fallback; overridable per item
+        teaser: "/assets/images/default_teaser.png" # Immagine teaser “fallback”
 
-# --- Archive index pages ----------------------------------------------
-category_archive:
+# ---------------------------------------------------------------------
+# Pagine archivio (categorie, tag e collezioni)
+#  • Tipo “liquid” usa layout interno di Minimal Mistakes
+# ---------------------------------------------------------------------
+category_archive:   # /categories/ – elenco categorie e relativi post
   type: liquid
   path: /categories/
 
-tag_archive:
+tag_archive:        # /tags/ – elenco tag e relativi post
   type: liquid
   path: /tags/
 
-repositories_archive:
+repositories_archive:  # /repositories/ – indice progetti (collezione)
   type: liquid
   path: /repositories/
 
-# Future collections (commented until in use)
+# Le sezioni seguenti sono previste per future collezioni “courses” e “awards”.
+#  – Commentate finché non verranno effettivamente popolate.
 # courses_archive:
 #   type: liquid
 #   path: /courses/

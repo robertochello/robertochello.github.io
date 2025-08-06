@@ -1,6 +1,0 @@
-# -------------------------------------------------------------------
-# Default teaser images for collections (override per item as needed)
-# -------------------------------------------------------------------
-repositories_default: "/assets/images/default_teaser.png"
-courses_default:      "/assets/images/default_course.png"
-awards_default:       "/assets/images/default_award.png"
