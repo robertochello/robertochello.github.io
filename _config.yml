@@ -10,30 +10,30 @@
 
 
 compress_html:
-  clippings: all
+  clippings: all            # Rimuove tutti gli spazi vuoti e tag opzionali dall'HTML generato (massima compressione).
   ignore:
-    envs: development  # disable compression in dev environment
+    envs: development       # Non applica la compressione quando Jekyll gira in modalità sviluppo (JEKYLL_ENV=development).
 
 
-# Site settings
-name: "Roberto Chello"
-title: Roberto Chello
-title_separator: "|"
-subtitle: ""
-email: robertochello@gmail.com
-url: "https://robertochello.github.io"
-baseurl: ""
-repository: "robertochello/robertochello.github.io"
-description: >-
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-# twitter_username: username
-github_username: robertochello
-minimal_mistakes_skin: dark
-search: true
-locale: "en-US"
-breadcrumb: false
+
+name: "Roberto Chello"      # Nome del sito o dell'autore principale. Può essere usato in varie parti del tema (es. attributi autore).
+title:        # Titolo del sito, mostrato nell'intestazione e nei titoli delle pagine del browser.
+title_separator: "|"        # Carattere separatore tra titolo del sito e titolo della pagina (qui una barra verticale "|").
+subtitle: ""                # Sottotitolo del sito, attualmente vuoto (opzionale, potresti inserire una breve frase descrittiva se lo desideri).
+email: robertochello@gmail.com   # Email di contatto mostrata nel profilo autore o per contattarti (facoltativo ma utile).
+url: "https://robertochello.github.io"  # URL completo del sito (dominio). Essenziale per generare link assoluti nel sito:contentReference[oaicite:2]{index=2}.
+baseurl: ""                 # Base URL del sito, qui vuoto perché il sito non è in una sottocartella. Lascia vuoto per siti nella root del dominio:contentReference[oaicite:3]{index=3}.
+repository: "robertochello/robertochello.github.io"  # Nome utente/nome repo GitHub (NWO) del sito:contentReference[oaicite:4]{index=4}. Serve ai plugin GitHub (es. dati di `site.github` e link "Modifica su GitHub").
+description: >-            
+  Write an awesome description for your new site here...  
+                        # Descrizione del sito, usata nei meta tag SEO e nel feed RSS:contentReference[oaicite:5]{index=5}. **Da aggiornare**: questo è il testo predefinito, conviene inserirne uno reale.
+# twitter_username: username  # (Opzione commentata) Username Twitter del sito, se impostato verrà usato per le Twitter Cards e meta tag social.
+github_username: robertochello  # Username GitHub associato al sito, usato ad esempio per icone/link social nel tema.
+minimal_mistakes_skin: dark    # Skin del tema Minimal Mistakes in uso:contentReference[oaicite:6]{index=6}. "dark" = palette scura (testo chiaro su sfondo scuro). Altre opzioni: "default", "air", "aqua", "contrast", "dirt", "neon", "mint", "plum", "sunrise".
+search: true                   # Abilita la funzionalità di ricerca interna del tema:contentReference[oaicite:7]{index=7}. Di default usa Lunr.js per indicizzare contenuti di post e collezioni.
+locale: "en-US"                # Imposta la localizzazione per date/ora e formati. "en-US" = inglese (Stati Uniti). Puoi usare "it-IT" per formattazione italiana se il sito è in italiano.
+breadcrumb: false              # Disabilita i link di breadcrumb (navigazione a briciole di pane). Il tema li ha off di default, impostare true li attiverebbe:contentReference[oaicite:8]{index=8}.
+
 
 # Build settings
 markdown: kramdown
