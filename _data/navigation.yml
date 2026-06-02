@@ -1,4 +1,11 @@
 main:
-  - title: "Repositories"
-    description: ""
+  - title: "Home"
+    url: /
+  - title: "About"
+    url: /about/
+  - title: "Projects"
     url: /repositories/
+  - title: "CV"
+    url: /assets/cv/RobertoChello_CV_EN.pdf
+  - title: "Contact"
+    url: mailto:robertochello@gmail.com
