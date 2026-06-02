@@ -1,0 +1,83 @@
+---
+# Jekyll front matter required for Sass processing
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+.portfolio-hero {
+  margin-bottom: 2.5rem;
+  padding: 2rem 0;
+}
+
+.portfolio-eyebrow,
+.project-kicker {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.portfolio-hero h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
+}
+
+.portfolio-lead,
+.project-summary {
+  max-width: 760px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.portfolio-actions,
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.portfolio-section {
+  margin: 2.5rem 0;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.portfolio-card,
+.project-meta {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.portfolio-card h3 {
+  margin-top: 0;
+}
+
+.project-header {
+  margin-bottom: 1.5rem;
+}
+
+.project-meta {
+  margin: 1.5rem 0;
+}
+
+.project-meta p:last-child {
+  margin-bottom: 0;
+}
+
+.project-content {
+  margin-top: 2rem;
+}
