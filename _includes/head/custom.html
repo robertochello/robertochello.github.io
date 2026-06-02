@@ -26,9 +26,80 @@
     margin-right: auto;
   }
 
+  .sidebar .author__avatar img {
+    border: 2px solid rgba(125, 211, 252, 0.45);
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.08), 0 18px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  .sidebar .author__content {
+    margin-top: 0.85rem;
+  }
+
+  .sidebar .author__name {
+    color: #f3f7fb;
+    font-size: 1.12rem;
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar .author__bio {
+    margin-top: 0.65rem;
+    color: rgba(243, 247, 251, 0.78);
+    font-size: 0.88rem;
+    line-height: 1.58;
+  }
+
+  .sidebar .author__urls-wrapper {
+    margin-top: 1rem;
+  }
+
+  .sidebar .author__urls {
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .sidebar .author__urls li {
+    margin-bottom: 0 !important;
+  }
+
+  .sidebar .author__urls a {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.15rem;
+    padding: 0.48rem 0.62rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
+    color: rgba(243, 247, 251, 0.86) !important;
+    font-size: 0.82rem;
+    transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+  }
+
+  .sidebar .author__urls a:hover {
+    transform: translateY(-1px);
+    border-color: rgba(125, 211, 252, 0.38);
+    background: rgba(59, 130, 246, 0.12);
+    color: #f3f7fb !important;
+    text-decoration: none;
+  }
+
+  .sidebar .author__urls i {
+    color: #7dd3fc;
+  }
+
   @media (min-width: 1024px) {
     .layout--home .hero-impact h1 {
       font-size: clamp(2.6rem, 5.2vw, 4.8rem);
+    }
+
+    .sidebar.sticky {
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(16, 26, 43, 0.72), rgba(6, 11, 18, 0.68));
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.20);
+      backdrop-filter: blur(14px);
     }
   }
 </style>
