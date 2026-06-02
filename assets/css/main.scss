@@ -1,40 +1,146 @@
----
-# Jekyll front matter required for Sass processing
----
-
-@charset "utf-8";
-
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
-@import "minimal-mistakes";
-
-.portfolio-hero {
-  margin-bottom: 2.5rem;
-  padding: 2rem 0;
+.section-heading {
+  margin-bottom: 1.25rem;
 }
 
-.portfolio-eyebrow,
-.project-kicker {
-  margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+.section-kicker {
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.75;
+  opacity: 0.72;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.portfolio-hero {
+  margin-bottom: 3rem;
+  padding: 2.25rem 0 1.25rem;
 }
 
 .portfolio-hero h1 {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 2.4rem;
+  font-size: 2.7rem;
+  line-height: 1.1;
 }
 
-.portfolio-lead,
-.project-summary {
-  max-width: 760px;
-  font-size: 1.05rem;
-  line-height: 1.65;
+.portfolio-lead {
+  max-width: 780px;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  opacity: 0.95;
 }
 
+.portfolio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.portfolio-section {
+  margin: 3rem 0;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.portfolio-card {
+  padding: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.portfolio-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+}
+
+.tool-chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.tool-chip {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.88rem;
+  line-height: 1;
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.flow-card {
+  position: relative;
+  padding: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.flow-card h3 {
+  margin-top: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.flow-step {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.72;
+}
+
+.portfolio-highlight {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+@media (max-width: 768px) {
+  .portfolio-hero h1 {
+    font-size: 2.15rem;
+  }
+
+  .portfolio-lead {
+    font-size: 1rem;
+  }
+}
 .portfolio-actions,
 .project-actions {
   display: flex;
