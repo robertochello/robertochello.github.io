@@ -56,10 +56,10 @@ plugins:
 author:
   name: "Roberto Chello"
   avatar: "/assets/images/Photo_CV.jpg"
-  bio: "PLC & Automation Engineer focused on industrial automation, motion control, robotics and technical documentation."
+  bio: "PLC Software Engineer turning industrial complexity into structured automation logic, diagnostics and documentation."
   location: "Italy"
   links:
-    - label: "Email"
+    - label: "Contact"
       icon: "fas fa-fw fa-envelope"
       url: "mailto:robertochello@gmail.com"
     - label: "LinkedIn"
@@ -68,7 +68,7 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/robertochello"
-    - label: "Curriculum Vitae"
+    - label: "Download CV"
       icon: "fas fa-fw fa-file-pdf"
       url: "/assets/cv/RobertoChello_CV_EN.pdf"
 
