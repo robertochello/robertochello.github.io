@@ -9,7 +9,7 @@ classes: wide
 
   <section class="hero-impact about-hero-impact">
     <p class="hero-impact__eyebrow">Engineering Identity · Automation Mindset · Continuous Improvement</p>
-    <h1 class="hero-title"><span class="hero-title__line">I build order</span><span class="hero-title__line">inside complexity.</span></h1>
+    <h1 class="hero-title"><span class="hero-title__line">I build order </span><span class="hero-title__line">inside complexity.</span></h1>
     <p class="hero-impact__lead">
       My strongest contribution is not only writing automation software, but turning fragmented technical requirements into structured systems that people can understand, operate and evolve.
     </p>
