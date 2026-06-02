@@ -1,54 +1,73 @@
 ---
 permalink: /about/
 title: "About"
+author_profile: true
+classes: wide
 ---
 
-<div class="about-page about-page--compact">
+<div class="portfolio-home about-page about-page--home-style">
 
-  <section class="about-hero about-hero--compact">
-    <p class="about-kicker">About</p>
-    <h1>Engineering background, automation mindset.</h1>
-    <p>
-      A concise profile of my technical background, working approach and professional direction.
+  <section class="hero-impact about-hero-impact">
+    <p class="hero-impact__eyebrow">Computer Engineering · Robotics · Automation</p>
+    <h1 class="hero-title"><span class="hero-title__line">Engineering background</span><span class="hero-title__line">automation mindset.</span></h1>
+    <p class="hero-impact__lead">
+      A concise overview of my technical background, working method and professional direction in industrial automation and PLC software engineering.
     </p>
-  </section>
 
-  <section class="about-profile-card">
-    <div>
-      <p class="about-kicker">Profile</p>
-      <h2>Computer Engineer specialized in Robotics and Automation.</h2>
+    <div class="hero-system" aria-hidden="true">
+      <span>Software</span>
+      <i></i>
+      <span>Control</span>
+      <i></i>
+      <span>Automation</span>
     </div>
-    <p>
-      My academic background combines software engineering, robotics, automation and control systems. Professionally, I apply this foundation to industrial automation, PLC software, motion-oriented logic and technical documentation.
-    </p>
   </section>
 
-  <section class="about-timeline">
+  <section class="impact-strip" aria-label="About summary">
     <div>
       <span>01</span>
-      <h3>Software foundation</h3>
-      <p>Programming, data structures, system-level thinking and engineering-oriented development.</p>
+      <strong>Background</strong>
+      <p>Computer Engineering with specialization in Robotics and Automation.</p>
     </div>
     <div>
       <span>02</span>
-      <h3>Robotics and control</h3>
-      <p>Automation, control systems, robotics, simulation and system integration principles.</p>
+      <strong>Focus</strong>
+      <p>PLC software, industrial automation, motion logic and HMI workflows.</p>
     </div>
     <div>
       <span>03</span>
-      <h3>Industrial application</h3>
-      <p>PLC software, HMI workflows, motion control concepts and maintainable project structures.</p>
+      <strong>Method</strong>
+      <p>Structured logic, clean project architecture and practical documentation.</p>
     </div>
   </section>
 
-  <section class="about-profile-card about-profile-card--accent">
-    <div>
-      <p class="about-kicker">Working Direction</p>
-      <h2>I am interested in engineering workflows that make technical systems easier to maintain.</h2>
+  <section class="section-clean">
+    <div class="section-clean__header">
+      <p>Profile</p>
+      <h2>Computer Engineer specialized in Robotics and Automation.</h2>
     </div>
     <p>
-      I focus on clarity, structured logic, consistent naming, practical documentation and reusable standards. The objective is to reduce ambiguity and make technical work easier to review, transfer and improve over time.
+      My academic background combines software engineering, robotics, automation and control systems. Professionally, I apply this foundation to industrial automation, PLC software, motion-oriented logic and structured technical documentation.
     </p>
+  </section>
+
+  <section class="focus-grid">
+    <article class="focus-card focus-card--primary">
+      <h3>Software Foundation</h3>
+      <p>Programming, data structures, system-level thinking and engineering-oriented development.</p>
+    </article>
+    <article class="focus-card">
+      <h3>Robotics & Control</h3>
+      <p>Automation, control systems, robotics, simulation and integration principles.</p>
+    </article>
+    <article class="focus-card">
+      <h3>Industrial Application</h3>
+      <p>PLC software, HMI workflows, motion control concepts and maintainable project structures.</p>
+    </article>
+    <article class="focus-card">
+      <h3>Working Direction</h3>
+      <p>Engineering workflows that reduce ambiguity and make technical systems easier to review, transfer and improve.</p>
+    </article>
   </section>
 
   <section class="cta-impact about-cta">
