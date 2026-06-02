@@ -3,37 +3,45 @@ layout: single
 ---
 
 {% if page.repolink %}
-  {% capture repolink %}{{ page.repolink }}{% endcapture %}
+  {% assign project_repository_url = page.repolink %}
 {% else %}
-  {% capture repolink %}https://github.com/{{ site.github_username }}/{{ page.reponame }}{% endcapture %}
+  {% assign project_repository_url = "https://github.com/" | append: site.github_username | append: "/" | append: page.reponame %}
 {% endif %}
 
 {% if page.repodoc %}
-  {% if jekyll.environment == "production" %}
-    {% capture repodoc %}/{{ page.reponame }}/{% endcapture %}
-  {% else %}
-    {% capture repodoc %}https://{{ site.github_username }}.github.io/{{ page.reponame }}/{% endcapture %}
-  {% endif %}
+  {% assign project_documentation_url = "/" | append: page.reponame | append: "/" %}
 {% endif %}
 
-<div class="container" style="max-width:800px; margin: 0 auto; padding: 20px; text-align: center;">
-  <p style="font-size:1.2em; color:#555;">
-    Benvenuto nella pagina della repository <strong>{{ page.reponame }}</strong>!
-  </p>
-  
-  <div class="button-container" style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 30px 0;">
-    <a href="{{ repolink }}" style="padding: 10px 20px; background-color:#4078c0; color:#fff; text-decoration:none; border-radius:5px; display: flex; align-items: center;">
-      <i class="fab fa-github" style="margin-right:5px;"></i> Visualizza Repository
-    </a>
-    
+<section class="project-header">
+  {% if page.reponame %}
+    <p class="project-kicker">Repository</p>
+    <h1>{{ page.reponame }}</h1>
+  {% endif %}
+
+  {% if page.excerpt %}
+    <p class="project-summary">{{ page.excerpt | markdownify | strip_html }}</p>
+  {% endif %}
+
+  <div class="project-actions">
+    <a class="btn btn--primary" href="{{ project_repository_url }}">View Repository</a>
     {% if page.repodoc %}
-    <a href="{{ repodoc }}" style="padding: 10px 20px; background-color:#6cc644; color:#fff; text-decoration:none; border-radius:5px; display: flex; align-items: center;">
-      <i class="fas fa-book" style="margin-right:5px;"></i> Visualizza Documentazione
-    </a>
+      <a class="btn btn--inverse" href="{{ project_documentation_url }}">View Documentation</a>
     {% endif %}
   </div>
+</section>
 
-  <div class="content" style="text-align:left; margin-top:20px;">
-    {{ content }}
-  </div>
-</div>
+{% if page.status or page.technologies %}
+<section class="project-meta">
+  {% if page.status %}
+    <p><strong>Status:</strong> {{ page.status }}</p>
+  {% endif %}
+
+  {% if page.technologies %}
+    <p><strong>Technologies:</strong> {{ page.technologies | join: ", " }}</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="project-content">
+  {{ content }}
+</section>
