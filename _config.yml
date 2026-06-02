@@ -68,7 +68,7 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/robertochello"
-    - label: "Download CV"
+    - label: "Curriculum Vitae"
       icon: "fas fa-fw fa-file-pdf"
       url: "/assets/cv/RobertoChello_CV_EN.pdf"
 
@@ -110,7 +110,7 @@ defaults:
       type: repositories
     values:
       layout: repository
-      author_profile: false
+      author_profile: true
       share: true
       header:
         teaser: "/assets/images/header.png"
