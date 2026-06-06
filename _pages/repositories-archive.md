@@ -18,7 +18,7 @@ author_profile: true
     <div class="hero-system" aria-hidden="true">
       <span>Robotics</span>
       <i></i>
-      <span>Software</span>
+      <span>Automation</span>
       <i></i>
       <span>Documentation</span>
     </div>
@@ -32,13 +32,13 @@ author_profile: true
     </div>
     <div>
       <span>02</span>
-      <strong>Engineering Structure</strong>
-      <p>Projects organized around interfaces, drivers, testing and documentation.</p>
+      <strong>Automation Knowledge</strong>
+      <p>Operational documentation, standards, playbooks and troubleshooting systems.</p>
     </div>
     <div>
       <span>03</span>
-      <strong>Portfolio Evolution</strong>
-      <p>Selected work will grow over time with automation, PLC and documentation projects.</p>
+      <strong>Engineering Structure</strong>
+      <p>Projects organized around clarity, interfaces, validation and maintainability.</p>
     </div>
   </section>
 
@@ -54,6 +54,13 @@ author_profile: true
 
   <section class="project-showcase-grid">
     <article class="project-showcase-card project-showcase-card--primary">
+      <p>Industrial Documentation</p>
+      <h3>SPAC Start Knowledge Base</h3>
+      <span>SPAC Start · MkDocs Material · Playbooks · Standards · Troubleshooting</span>
+      <a href="/repositories/spac-start-knowledge-base/">View Project</a>
+    </article>
+
+    <article class="project-showcase-card">
       <p>Robotics / ROS 2</p>
       <h3>RH8D Robotic Hand ROS 2 Driver</h3>
       <span>ROS 2 · C++ · RH8D · Robotic manipulation</span>
