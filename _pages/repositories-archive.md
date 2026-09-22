@@ -1,9 +1,7 @@
 ---
 title: Projects
-layout: single
+layout: site-standalone
 permalink: /repositories/
-classes: wide
-author_profile: true
 ---
 
 <div class="portfolio-home projects-page">
