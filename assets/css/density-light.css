@@ -1,0 +1,147 @@
+/* Roberto Chello — homepage density pass */
+
+.rcx-home--minimal .rcx-hero__content {
+  width: min(1100px, 90vw);
+}
+
+.rcx-home--minimal .rcx-hero__subtitle {
+  max-width: 620px;
+  margin-top: 1.5rem;
+}
+
+.rcx-home--minimal .rcx-flow {
+  width: min(820px, 100%);
+  margin-top: 2rem;
+  padding: .8rem .9rem;
+  background: rgba(7,13,21,.7);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.rcx-home--minimal .rcx-hero__actions {
+  margin-top: 1.5rem;
+}
+
+.rcx-home--minimal .rcx-section {
+  width: min(1160px, 90vw);
+  padding: clamp(5.5rem, 8vw, 7.5rem) 0;
+}
+
+.rcx-home--minimal .rcx-section__head {
+  grid-template-columns: minmax(135px,.28fr) 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin-bottom: 3rem;
+}
+
+.rcx-home--minimal .rcx-section__title {
+  font-size: clamp(2.4rem, 5.2vw, 4.9rem);
+}
+
+.rcx-home--minimal .rcx-section__lead {
+  max-width: 520px;
+}
+
+.rcx-home--minimal .rcx-domain-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rcx-home--minimal .rcx-domain {
+  min-height: 320px;
+  padding: 1.75rem;
+}
+
+.rcx-home--minimal .rcx-domain h3 {
+  margin-top: 4.5rem;
+  font-size: clamp(1.65rem, 2.6vw, 2.45rem);
+}
+
+.rcx-home--minimal .rcx-domain p {
+  font-size: .9rem;
+}
+
+.rcx-home--minimal .rcx-domain__tags {
+  left: 1.75rem;
+  bottom: 1.45rem;
+}
+
+.rcx-home--minimal .rcx-project {
+  min-height: 315px;
+  padding: 1.4rem;
+}
+
+.rcx-home--minimal .rcx-project h3 {
+  font-size: clamp(1.7rem, 2.6vw, 2.35rem);
+}
+
+.rcx-home--minimal .rcx-project p {
+  max-width: 30ch;
+}
+
+.rcx-home--minimal .rcx-work .rcx-hero__actions {
+  justify-content: flex-start;
+}
+
+.rcx-home--minimal .rcx-finale--compact {
+  min-height: 42vh;
+  border-bottom: 0;
+}
+
+.rcx-home--minimal .rcx-finale--compact::before {
+  display: none;
+}
+
+.rcx-home--minimal .rcx-finale--compact .rcx-finale__inner {
+  width: min(860px, 90vw);
+  padding: clamp(4.5rem, 8vw, 7rem) 0;
+}
+
+.rcx-home--minimal .rcx-finale--compact h2 {
+  font-size: clamp(3rem, 7vw, 6.4rem);
+}
+
+.rcx-home--minimal .rcx-finale--compact .rcx-kicker {
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .rcx-home--minimal .rcx-domain-grid--three {
+    grid-template-columns: 1fr;
+  }
+
+  .rcx-home--minimal .rcx-domain {
+    min-height: 245px;
+  }
+
+  .rcx-home--minimal .rcx-domain h3 {
+    margin-top: 2.5rem;
+  }
+
+  .rcx-home--minimal .rcx-section__head {
+    grid-template-columns: 1fr;
+    gap: .8rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .rcx-home--minimal .rcx-hero__content {
+    width: min(100% - 2rem, 1100px);
+    padding-top: 8.25rem;
+  }
+
+  .rcx-home--minimal .rcx-flow {
+    margin-top: 1.5rem;
+  }
+
+  .rcx-home--minimal .rcx-section {
+    width: min(100% - 2rem, 1160px);
+    padding: 4rem 0;
+  }
+
+  .rcx-home--minimal .rcx-project {
+    min-height: 270px;
+  }
+
+  .rcx-home--minimal .rcx-finale--compact {
+    min-height: auto;
+  }
+}

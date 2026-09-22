@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/portfolio-v2.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/portfolio-shell.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/performance-light.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/density-light.css' | relative_url }}">
 </head>
 <body class="rcx-page">
   <a class="rcx-skip" href="#main">Skip to content</a>
@@ -38,24 +39,23 @@
     </nav>
   </header>
 
-  <main class="rcx-home" id="main">
+  <main class="rcx-home rcx-home--minimal" id="main">
     <section class="rcx-hero" id="top">
       <canvas class="rcx-hero__canvas" id="rcxIndustrialCanvas" aria-hidden="true"></canvas>
 
       <div class="rcx-hero__topline">
         <strong>RC © 2026</strong>
         <span class="rcx-hero__status"><i></i> Automation systems / online</span>
-        <span>Computer Engineering · Robotics & Automation</span>
       </div>
 
       <div class="rcx-hero__content">
-        <p class="rcx-kicker">PLC Software Engineer · Industrial Automation · Motion Control</p>
+        <p class="rcx-kicker">PLC Software Engineer · Industrial Automation</p>
         <h1 class="rcx-hero__title" aria-label="Roberto Chello">
           <span>Roberto</span>
           <span>Chello</span>
         </h1>
         <p class="rcx-hero__subtitle">
-          I engineer control software and technical workflows for industrial systems, with a focus on structured PLC logic, motion, diagnostics and maintainable automation architectures.
+          Structured control software for industrial systems, with a focus on PLC logic, motion, diagnostics and maintainable engineering.
         </p>
 
         <div class="rcx-flow" aria-label="Industrial control flow">
@@ -67,58 +67,41 @@
           <i class="rcx-flow__line"></i>
           <div class="rcx-flow__node"><small>04 / Process</small><strong>Machine</strong></div>
         </div>
-        <div class="rcx-meter"><span>Control cycle</span><strong id="rcxCycleMeter">000%</strong></div>
 
         <div class="rcx-hero__actions">
           <a class="rcx-button rcx-button--primary" href="/repositories/">Explore projects</a>
           <a class="rcx-button" href="/about/">About me</a>
-          <a class="rcx-button" href="/assets/cv/RobertoChello_CV_EN.pdf">Download CV</a>
         </div>
       </div>
-
-      <div class="rcx-scrollcue"><span>Scroll to run cycle</span><i></i></div>
     </section>
-
-    <div class="rcx-marquee" aria-hidden="true">
-      <div class="rcx-marquee__track">
-        <span>PLC Software <em>◆</em></span><span>Industrial Automation <em>◆</em></span><span>Motion Control <em>◆</em></span><span>Robotics <em>◆</em></span><span>Industrial Networking <em>◆</em></span><span>Diagnostics <em>◆</em></span>
-        <span>PLC Software <em>◆</em></span><span>Industrial Automation <em>◆</em></span><span>Motion Control <em>◆</em></span><span>Robotics <em>◆</em></span><span>Industrial Networking <em>◆</em></span><span>Diagnostics <em>◆</em></span>
-      </div>
-    </div>
 
     <section class="rcx-domains">
       <div class="rcx-section">
         <div class="rcx-section__head rcx-reveal">
-          <p class="rcx-section__eyebrow">01 / Engineering domains</p>
+          <p class="rcx-section__eyebrow">01 / Focus</p>
           <div>
-            <h2 class="rcx-section__title">From machine process<br>to deterministic control.</h2>
-            <p class="rcx-section__lead">The common thread is simple: understand the process, structure the software, make behavior observable and keep the result maintainable.</p>
+            <h2 class="rcx-section__title">Control systems,<br>kept understandable.</h2>
+            <p class="rcx-section__lead">Three areas define most of my technical work.</p>
           </div>
         </div>
 
-        <div class="rcx-domain-grid">
+        <div class="rcx-domain-grid rcx-domain-grid--three">
           <article class="rcx-domain">
             <span class="rcx-domain__no">01 /</span>
-            <h3>Industrial Automation</h3>
-            <p>PLC-based machine control, commissioning-oriented software, HMI interaction, field signals and industrial communication connected to real processes.</p>
-            <div class="rcx-domain__tags"><span>Siemens</span><span>TIA Portal</span><span>STEP 7</span></div>
+            <h3>PLC Software</h3>
+            <p>Structured machine logic, readable states, alarms and diagnostics designed for commissioning and maintenance.</p>
+            <div class="rcx-domain__tags"><span>Siemens</span><span>TIA Portal</span><span>SCL</span></div>
           </article>
           <article class="rcx-domain">
             <span class="rcx-domain__no">02 /</span>
-            <h3>PLC Software Architecture</h3>
-            <p>Readable separation between states, commands, feedbacks, permissives, interlocks, alarms and diagnostics — designed for troubleshooting and future changes.</p>
-            <div class="rcx-domain__tags"><span>SCL</span><span>LAD</span><span>Diagnostics</span></div>
+            <h3>Motion & Drives</h3>
+            <p>Axis sequencing and control logic where timing, state and fault behavior need to stay explicit.</p>
+            <div class="rcx-domain__tags"><span>Motion</span><span>Drives</span></div>
           </article>
           <article class="rcx-domain">
             <span class="rcx-domain__no">03 /</span>
-            <h3>Motion & Drives</h3>
-            <p>Axis concepts, command sequencing, servo-oriented workflows and control logic where timing, state and fault behavior need to remain explicit.</p>
-            <div class="rcx-domain__tags"><span>Motion</span><span>Drives</span><span>Sequencing</span></div>
-          </article>
-          <article class="rcx-domain">
-            <span class="rcx-domain__no">04 /</span>
             <h3>Robotics & Control</h3>
-            <p>ROS 2, C++ and control-oriented robotics projects spanning actuator interfaces, robotic hands, sensing and manipulation-focused software.</p>
+            <p>ROS 2, C++ and control-oriented work spanning actuators, sensing and robotic manipulation.</p>
             <div class="rcx-domain__tags"><span>ROS 2</span><span>C++</span><span>Control</span></div>
           </article>
         </div>
@@ -130,33 +113,29 @@
         <div class="rcx-section__head rcx-reveal">
           <p class="rcx-section__eyebrow">02 / Selected work</p>
           <div>
-            <h2 class="rcx-section__title">Engineering work,<br>not showcase filler.</h2>
-            <p class="rcx-section__lead">A selection of public projects already documented in this portfolio and on GitHub.</p>
+            <h2 class="rcx-section__title">A few projects.<br>Enough to show the work.</h2>
           </div>
         </div>
 
         <div class="rcx-work-grid">
           <a class="rcx-project" href="https://github.com/robertochello/uclv-rh8d-force-control" target="_blank" rel="noopener">
-            <div class="rcx-project__sheen"></div>
             <div class="rcx-project__meta"><span>Robotics · Control</span><span>01</span></div>
             <h3>RH8D Force Control</h3>
-            <p>Control work focused on grasp force regulation and slipping avoidance strategies for the RH8D robotic hand.</p>
+            <p>Grasp force regulation and slipping avoidance for the RH8D robotic hand.</p>
             <span class="rcx-project__cta">Open repository</span>
           </a>
 
           <a class="rcx-project" href="https://github.com/robertochello/uclv-seed-robotics-ros" target="_blank" rel="noopener">
-            <div class="rcx-project__sheen"></div>
             <div class="rcx-project__meta"><span>ROS 2 · C++</span><span>02</span></div>
             <h3>RH8D ROS 2 Driver</h3>
-            <p>ROS 2 and C++ driver for controlling the Seed Robotics RH8D hand and integrating fingertip sensor data.</p>
+            <p>ROS 2 driver for robotic hand control and fingertip sensor integration.</p>
             <span class="rcx-project__cta">Open repository</span>
           </a>
 
           <a class="rcx-project" href="https://github.com/robertochello/uclv-dynamixel-utils" target="_blank" rel="noopener">
-            <div class="rcx-project__sheen"></div>
             <div class="rcx-project__meta"><span>C++ · Protocol 2.0</span><span>03</span></div>
             <h3>Dynamixel Utilities</h3>
-            <p>Reusable C++ utility layer for Dynamixel motor communication and ROS 2 based robotic applications.</p>
+            <p>Reusable C++ utilities for Dynamixel motor communication.</p>
             <span class="rcx-project__cta">Open repository</span>
           </a>
         </div>
@@ -167,48 +146,13 @@
       </div>
     </section>
 
-    <section class="rcx-stack">
-      <div class="rcx-section">
-        <div class="rcx-section__head rcx-reveal">
-          <p class="rcx-section__eyebrow">03 / Technical environment</p>
-          <div><h2 class="rcx-section__title">Tools follow the system.<br>Not the other way around.</h2></div>
-        </div>
-
-        <div class="rcx-stack-grid rcx-reveal">
-          <div class="rcx-stack-item"><strong>Automation & Control</strong><p>TIA Portal · STEP 7 · S7-1200 / S7-1500 · PLC LAD / AWL / SCL · MATLAB · Simulink</p></div>
-          <div class="rcx-stack-item"><strong>Programming</strong><p>C · C++ · Python · PowerShell · Bash / Zsh · Java · VBA</p></div>
-          <div class="rcx-stack-item"><strong>Robotics</strong><p>ROS · ROS 2 · Dynamixel Protocol 2.0 · RoboDK · RViz · MoveIt!</p></div>
-          <div class="rcx-stack-item"><strong>Industrial Networking</strong><p>PROFINET · Modbus TCP / RTU · OPC UA · TCP/IP · VLANs · OpenVPN</p></div>
-          <div class="rcx-stack-item"><strong>Engineering Documentation</strong><p>Markdown · LaTeX · TikZ · Doxygen · commissioning guides · technical standards</p></div>
-          <div class="rcx-stack-item"><strong>Platforms & Tools</strong><p>Git · GitHub · VS Code · Windows · Linux · macOS</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="rcx-process">
-      <div class="rcx-section">
-        <div class="rcx-section__head rcx-reveal">
-          <p class="rcx-section__eyebrow">04 / Workflow</p>
-          <div><h2 class="rcx-section__title">Understand.<br>Structure. Deliver.</h2></div>
-        </div>
-
-        <div class="rcx-process-grid">
-          <div class="rcx-process-step rcx-reveal"><span>01 / Understand</span><h3>Process first</h3><p>Signals, machine behavior, timing, constraints, failure modes and operator interaction define the real problem.</p></div>
-          <div class="rcx-process-step rcx-reveal"><span>02 / Structure</span><h3>Make behavior explicit</h3><p>States, commands, feedbacks, alarms, interfaces and diagnostics are organized before complexity spreads through the code.</p></div>
-          <div class="rcx-process-step rcx-reveal"><span>03 / Deliver</span><h3>Leave it maintainable</h3><p>Readable implementation, reusable documentation and a system that can be diagnosed and modified without reverse engineering it again.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="rcx-finale">
+    <section class="rcx-finale rcx-finale--compact">
       <div class="rcx-finale__inner rcx-reveal">
-        <p class="rcx-kicker">Control software should remain understandable after commissioning.</p>
-        <h2><span>Reliable by design.</span><span><em>Clear by structure.</em></span></h2>
-        <p>Industrial automation, PLC software, motion control and robotics approached with the same objective: deterministic behavior and maintainable engineering.</p>
+        <p class="rcx-kicker">Engineering should stay readable after commissioning.</p>
+        <h2><span>Reliable.</span><span><em>Clear.</em></span></h2>
         <div class="rcx-finale__actions">
-          <a class="rcx-button rcx-button--primary" href="/repositories/">Explore projects</a>
-          <a class="rcx-button" href="/about/">About Roberto</a>
-          <a class="rcx-button" href="https://github.com/robertochello" target="_blank" rel="noopener">GitHub</a>
+          <a class="rcx-button rcx-button--primary" href="/repositories/">Projects</a>
+          <a class="rcx-button" href="mailto:robertochello@gmail.com">Contact</a>
         </div>
       </div>
     </section>
