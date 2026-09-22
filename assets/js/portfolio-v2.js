@@ -249,7 +249,13 @@
       const rect = hero.getBoundingClientRect();
       const travel = Math.max(1, rect.height * .78);
       const progress = clamp(-rect.top / travel);
-      root.style.setProperty('--rcx-hero-progress', progress.toFixed(3));
+
+      root.style.setProperty('--rcx-title-y', `${(-10 * progress).toFixed(2)}px`);
+      root.style.setProperty('--rcx-title-scale', (1 - progress * .025).toFixed(4));
+      root.style.setProperty('--rcx-title-opacity', (1 - progress * .38).toFixed(3));
+      root.style.setProperty('--rcx-detail-y', `${(-8 * progress).toFixed(2)}px`);
+      root.style.setProperty('--rcx-detail-opacity', (1 - progress * .45).toFixed(3));
+
       network.setProgress(progress);
       if (meter) meter.textContent = `${String(Math.round(progress * 100)).padStart(3, '0')}%`;
     };
