@@ -3,29 +3,68 @@
   if (!root) return;
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const compact = window.matchMedia('(max-width: 799px)').matches;
+  const hero = document.querySelector('.rcx-hero');
   const canvas = document.getElementById('rcxIndustrialCanvas');
   const meter = document.getElementById('rcxCycleMeter');
   const preloader = document.getElementById('rcxPreloader');
   const preCount = document.getElementById('rcxPreCount');
   const preBar = document.getElementById('rcxPreBar');
+  const marquee = document.querySelector('.rcx-marquee');
+
+  const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
 
   class IndustrialNetwork {
     constructor(el) {
       this.el = el;
       this.ctx = el?.getContext('2d');
-      this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.dpr = Math.min(window.devicePixelRatio || 1, compact ? 1.25 : 1.5);
       this.progress = 0;
       this.t = 0;
+      this.active = false;
+      this.raf = 0;
+      this.lastFrame = 0;
+      this.frameInterval = 1000 / (compact ? 24 : 30);
+      this.resizeQueued = false;
       this.nodes = [
         { x: .14, y: .60, label: 'FIELD I/O' },
         { x: .37, y: .40, label: 'PLC' },
         { x: .62, y: .57, label: 'MOTION' },
         { x: .84, y: .36, label: 'MACHINE' },
       ];
+
       if (!this.ctx) return;
       this.resize();
-      window.addEventListener('resize', () => this.resize(), { passive: true });
-      this.loop();
+      this.draw();
+
+      window.addEventListener('resize', () => this.queueResize(), { passive: true });
+
+      if ('IntersectionObserver' in window && hero) {
+        this.visibilityObserver = new IntersectionObserver(([entry]) => {
+          this.setActive(entry.isIntersecting && !document.hidden);
+        }, { rootMargin: '120px 0px' });
+        this.visibilityObserver.observe(hero);
+      } else {
+        this.setActive(!reduced);
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) this.setActive(false);
+        else if (hero) {
+          const rect = hero.getBoundingClientRect();
+          this.setActive(rect.bottom > -120 && rect.top < window.innerHeight + 120);
+        }
+      });
+    }
+
+    queueResize() {
+      if (this.resizeQueued) return;
+      this.resizeQueued = true;
+      requestAnimationFrame(() => {
+        this.resizeQueued = false;
+        this.resize();
+        this.draw();
+      });
     }
 
     resize() {
@@ -38,15 +77,29 @@
       this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     }
 
-    setProgress(v) {
-      this.progress = Math.max(0, Math.min(1, v));
+    setActive(active) {
+      const next = Boolean(active) && !reduced;
+      if (this.active === next) return;
+      this.active = next;
+      if (this.active && !this.raf) this.raf = requestAnimationFrame((ts) => this.loop(ts));
+      if (!this.active && this.raf) {
+        cancelAnimationFrame(this.raf);
+        this.raf = 0;
+      }
+    }
+
+    setProgress(value) {
+      const next = clamp(value);
+      if (Math.abs(next - this.progress) < .003) return;
+      this.progress = next;
+      if (!this.active) this.draw();
     }
 
     point(node) {
       return { x: node.x * this.w, y: node.y * this.h };
     }
 
-    line(a, b, alpha = .25) {
+    line(a, b, alpha = .2) {
       const pa = this.point(a);
       const pb = this.point(b);
       const c = this.ctx;
@@ -58,18 +111,18 @@
       c.stroke();
     }
 
-    pulse(a, b, phase, radius = 3) {
+    pulse(a, b, phase, radius = 2.5) {
       const pa = this.point(a);
       const pb = this.point(b);
-      const p = (this.t * .12 + phase + this.progress * .85) % 1;
+      const p = (this.t * .09 + phase + this.progress * .8) % 1;
       const x = pa.x + (pb.x - pa.x) * p;
       const y = pa.y + (pb.y - pa.y) * p;
       const c = this.ctx;
       c.beginPath();
       c.arc(x, y, radius, 0, Math.PI * 2);
-      c.fillStyle = 'rgba(89,220,255,.95)';
+      c.fillStyle = 'rgba(89,220,255,.86)';
       c.shadowColor = '#59dcff';
-      c.shadowBlur = 14;
+      c.shadowBlur = 6;
       c.fill();
       c.shadowBlur = 0;
     }
@@ -80,22 +133,21 @@
       const active = this.progress >= index / (this.nodes.length - 1) - .08;
 
       c.beginPath();
-      c.arc(p.x, p.y, active ? 6 : 4, 0, Math.PI * 2);
-      c.fillStyle = active ? 'rgba(117,240,173,.95)' : 'rgba(89,220,255,.7)';
+      c.arc(p.x, p.y, active ? 5 : 3.5, 0, Math.PI * 2);
+      c.fillStyle = active ? 'rgba(117,240,173,.9)' : 'rgba(89,220,255,.62)';
       c.shadowColor = active ? '#75f0ad' : '#59dcff';
-      c.shadowBlur = active ? 18 : 10;
+      c.shadowBlur = active ? 8 : 5;
       c.fill();
       c.shadowBlur = 0;
 
       c.beginPath();
-      c.arc(p.x, p.y, 18 + index * 2, 0, Math.PI * 2);
-      c.strokeStyle = active ? 'rgba(117,240,173,.22)' : 'rgba(89,220,255,.16)';
+      c.arc(p.x, p.y, 16 + index * 2, 0, Math.PI * 2);
+      c.strokeStyle = active ? 'rgba(117,240,173,.16)' : 'rgba(89,220,255,.12)';
       c.stroke();
 
       c.font = '600 10px ui-monospace, SFMono-Regular, Menlo, monospace';
-      c.letterSpacing = '1px';
-      c.fillStyle = 'rgba(220,233,244,.55)';
-      c.fillText(node.label, p.x + 14, p.y - 14);
+      c.fillStyle = 'rgba(220,233,244,.48)';
+      c.fillText(node.label, p.x + 13, p.y - 13);
     }
 
     draw() {
@@ -103,22 +155,25 @@
       const c = this.ctx;
       c.clearRect(0, 0, this.w, this.h);
 
-      for (let i = 0; i < this.nodes.length - 1; i++) {
-        this.line(this.nodes[i], this.nodes[i + 1], .22 + this.progress * .16);
-        this.pulse(this.nodes[i], this.nodes[i + 1], i * .31, i === 1 ? 3.4 : 2.7);
+      for (let i = 0; i < this.nodes.length - 1; i += 1) {
+        this.line(this.nodes[i], this.nodes[i + 1], .17 + this.progress * .1);
+        this.pulse(this.nodes[i], this.nodes[i + 1], i * .31, i === 1 ? 2.8 : 2.3);
       }
 
       this.nodes.forEach((node, i) => this.drawNode(node, i));
     }
 
-    loop() {
-      if (!this.ctx || reduced) {
+    loop(timestamp) {
+      this.raf = 0;
+      if (!this.active || !this.ctx) return;
+
+      if (timestamp - this.lastFrame >= this.frameInterval) {
+        this.lastFrame = timestamp;
+        this.t += this.frameInterval / 1000;
         this.draw();
-        return;
       }
-      this.t += .016;
-      this.draw();
-      requestAnimationFrame(() => this.loop());
+
+      this.raf = requestAnimationFrame((ts) => this.loop(ts));
     }
   }
 
@@ -127,154 +182,99 @@
   function finishPreloader() {
     if (!preloader) return;
     preloader.classList.add('is-done');
-    setTimeout(() => preloader.remove(), 700);
+    window.setTimeout(() => preloader.remove(), 320);
   }
 
-  function initFallbackReveals() {
-    const els = document.querySelectorAll('.rcx-reveal');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; });
+  function initPreloader() {
+    if (!preloader) return;
+
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem('rcxIntroSeen') === '1';
+    } catch (_) {
+      seen = false;
+    }
+
+    if (seen || reduced) {
+      preloader.remove();
       return;
     }
-    const io = new IntersectionObserver((entries) => {
+
+    const duration = 420;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = clamp((now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(eased * 100);
+      if (preCount) preCount.textContent = String(value).padStart(3, '0');
+      if (preBar) preBar.style.width = `${value}%`;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+        return;
+      }
+
+      try { sessionStorage.setItem('rcxIntroSeen', '1'); } catch (_) {}
+      finishPreloader();
+    };
+
+    requestAnimationFrame(tick);
+  }
+
+  function initReveals() {
+    const elements = document.querySelectorAll('.rcx-reveal');
+    if (reduced || !('IntersectionObserver' in window)) {
+      elements.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.animate(
-          [{ opacity: 0, transform: 'translateY(40px)' }, { opacity: 1, transform: 'translateY(0)' }],
-          { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
-        );
-        io.unobserve(entry.target);
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       });
-    }, { threshold: .12 });
-    els.forEach((el) => io.observe(el));
+    }, { threshold: .08, rootMargin: '0px 0px -4% 0px' });
+
+    elements.forEach((el) => observer.observe(el));
   }
 
-  function initTilt() {
-    if (!window.matchMedia('(pointer:fine)').matches || reduced) return;
-    document.querySelectorAll('.rcx-project').forEach((card) => {
-      const sheen = card.querySelector('.rcx-project__sheen');
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const nx = (e.clientX - r.left) / r.width - .5;
-        const ny = (e.clientY - r.top) / r.height - .5;
-        card.style.transform = `rotateY(${nx * 7}deg) rotateX(${-ny * 7}deg) translateY(-5px)`;
-        if (sheen) sheen.style.transform = `translate(${nx * 18}%, ${ny * 18}%)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        if (sheen) sheen.style.transform = '';
-      });
-    });
+  function initHeroProgress() {
+    if (!hero) return;
+    let queued = false;
+
+    const update = () => {
+      queued = false;
+      const rect = hero.getBoundingClientRect();
+      const travel = Math.max(1, rect.height * .78);
+      const progress = clamp(-rect.top / travel);
+      root.style.setProperty('--rcx-hero-progress', progress.toFixed(3));
+      network.setProgress(progress);
+      if (meter) meter.textContent = `${String(Math.round(progress * 100)).padStart(3, '0')}%`;
+    };
+
+    const queue = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue, { passive: true });
+    update();
   }
 
-  function initGsap() {
-    if (!window.gsap || !window.ScrollTrigger || reduced) {
-      finishPreloader();
-      initFallbackReveals();
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const counter = { value: 0 };
-    gsap.timeline({ onComplete: finishPreloader })
-      .to(counter, {
-        value: 100,
-        duration: .9,
-        ease: 'power2.inOut',
-        onUpdate: () => {
-          const value = Math.round(counter.value);
-          if (preCount) preCount.textContent = String(value).padStart(3, '0');
-          if (preBar) preBar.style.width = `${value}%`;
-        },
-      })
-      .to({}, { duration: .12 });
-
-    gsap.from('.rcx-hero__title span', {
-      yPercent: 110,
-      opacity: 0,
-      duration: 1.05,
-      stagger: .09,
-      ease: 'power4.out',
-      delay: 1.02,
-    });
-    gsap.from('.rcx-kicker, .rcx-hero__subtitle, .rcx-flow, .rcx-hero__actions', {
-      y: 28,
-      opacity: 0,
-      duration: .8,
-      stagger: .09,
-      ease: 'power3.out',
-      delay: 1.25,
-    });
-
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 800px)', () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.rcx-hero',
-          start: 'top top',
-          end: '+=185%',
-          pin: true,
-          scrub: .6,
-          onUpdate: (st) => {
-            network.setProgress(st.progress);
-            if (meter) meter.textContent = `${String(Math.round(st.progress * 100)).padStart(3, '0')}%`;
-          },
-        },
-      });
-      tl.to('.rcx-hero__title', { scale: .92, opacity: .12, ease: 'none' }, 0)
-        .to('.rcx-hero__subtitle', { opacity: 0, y: -25, ease: 'none' }, 0)
-        .to('.rcx-flow', { y: -20, scale: 1.03, borderColor: 'rgba(89,220,255,.48)', ease: 'none' }, 0)
-        .to('.rcx-hero__actions', { opacity: 0, y: 16, ease: 'none' }, .06)
-        .to('.rcx-scrollcue', { opacity: 0, ease: 'none' }, 0);
-    });
-
-    mm.add('(max-width: 799px)', () => {
-      ScrollTrigger.create({
-        trigger: '.rcx-hero',
-        start: 'top top',
-        end: 'bottom top',
-        onUpdate: (st) => {
-          network.setProgress(st.progress);
-          if (meter) meter.textContent = `${String(Math.round(st.progress * 100)).padStart(3, '0')}%`;
-        },
-      });
-    });
-
-    gsap.utils.toArray('.rcx-reveal').forEach((el) => {
-      gsap.fromTo(el,
-        { opacity: 0, y: 44 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: .85,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 86%', once: true },
-        }
-      );
-    });
-
-    gsap.utils.toArray('.rcx-domain').forEach((card, i) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 55,
-        duration: .8,
-        delay: i % 2 ? .08 : 0,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: card, start: 'top 88%', once: true },
-      });
-    });
-
-    gsap.from('.rcx-project', {
-      opacity: 0,
-      y: 70,
-      stagger: .12,
-      duration: .9,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: '.rcx-work-grid', start: 'top 82%', once: true },
-    });
+  function initMarqueePause() {
+    if (!marquee || reduced || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      marquee.classList.toggle('is-paused', !entry.isIntersecting || document.hidden);
+    }, { rootMargin: '80px 0px' });
+    observer.observe(marquee);
   }
 
-  initTilt();
-  initGsap();
+  initPreloader();
+  initReveals();
+  initHeroProgress();
+  initMarqueePause();
 })();
