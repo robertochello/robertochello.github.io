@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: site-standalone
 ---
 
 {% if page.repolink %}
@@ -13,20 +13,19 @@ layout: single
 {% endif %}
 
 <section class="project-header">
-  {% if page.reponame %}
-    <p class="project-kicker">Repository</p>
-    <h1>{{ page.reponame }}</h1>
-  {% endif %}
+  <p class="project-kicker"><a href="/repositories/">Projects</a> / Repository</p>
+  <h1>{% if page.title %}{{ page.title }}{% else %}{{ page.reponame }}{% endif %}</h1>
 
   {% if page.excerpt %}
     <p class="project-summary">{{ page.excerpt | markdownify | strip_html }}</p>
   {% endif %}
 
   <div class="project-actions">
-    <a class="btn btn--primary" href="{{ project_repository_url }}">View Repository</a>
+    <a href="{{ project_repository_url }}" target="_blank" rel="noopener">View Repository</a>
     {% if page.repodoc %}
-      <a class="btn btn--inverse" href="{{ project_documentation_url }}">View Documentation</a>
+      <a href="{{ project_documentation_url }}">View Documentation</a>
     {% endif %}
+    <a href="/repositories/">All Projects</a>
   </div>
 </section>
 
@@ -37,7 +36,7 @@ layout: single
   {% endif %}
 
   {% if page.technologies %}
-    <p><strong>Technologies:</strong> {{ page.technologies | join: ", " }}</p>
+    <p><strong>Technologies:</strong> {{ page.technologies | join: " · " }}</p>
   {% endif %}
 </section>
 {% endif %}
