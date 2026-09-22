@@ -273,8 +273,6 @@
       ease: 'power3.out',
       scrollTrigger: { trigger: '.rcx-work-grid', start: 'top 82%', once: true },
     });
-
-    gsap.to('.rcx-finale::before', { scale: 1.1 });
   }
 
   initTilt();
