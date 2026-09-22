@@ -1,0 +1,158 @@
+/* Standalone shell for the cinematic homepage. Keeps Minimal Mistakes/Jekyll chrome out of / only. */
+
+html {
+  margin: 0;
+  padding: 0;
+  background: #05080d;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body.rcx-page {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #05080d;
+  color: #f4f7fb;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.rcx-page *,
+body.rcx-page *::before,
+body.rcx-page *::after {
+  box-sizing: border-box;
+}
+
+body.rcx-page .rcx-home {
+  width: 100%;
+  margin: 0;
+}
+
+.rcx-skip {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 12000;
+  padding: .65rem .9rem;
+  background: #59dcff;
+  color: #031015;
+  font-size: .75rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rcx-skip:focus { top: 1rem; }
+
+.rcx-sitebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3000;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 clamp(1.25rem, 4vw, 4.5rem);
+  border-bottom: 1px solid rgba(169, 188, 207, .12);
+  background: rgba(5, 8, 13, .78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.rcx-sitebar a {
+  color: #f4f7fb;
+  text-decoration: none;
+}
+
+.rcx-sitebar__brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .65rem;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+.rcx-sitebar__brand span {
+  color: #8d9baa;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.rcx-sitebar nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(.9rem, 2vw, 1.7rem);
+}
+
+.rcx-sitebar nav a {
+  color: #a8b4c1;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+
+.rcx-sitebar nav a:hover,
+.rcx-sitebar nav a:focus-visible { color: #59dcff; }
+
+body.rcx-page .rcx-hero {
+  min-height: 100svh;
+  padding-top: 64px;
+}
+
+body.rcx-page .rcx-hero__topline { top: 5.25rem; }
+body.rcx-page .rcx-hero__content { padding-top: 10rem; }
+
+.rcx-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem clamp(1.25rem, 4vw, 4.5rem);
+  border-top: 1px solid rgba(169, 188, 207, .14);
+  background: #05080d;
+  color: #718090;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.rcx-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+}
+
+.rcx-footer a {
+  color: #9aabb9;
+  text-decoration: none;
+}
+
+.rcx-footer a:hover,
+.rcx-footer a:focus-visible { color: #59dcff; }
+
+@media (max-width: 760px) {
+  .rcx-sitebar { min-height: 58px; padding-inline: 1rem; }
+  .rcx-sitebar__brand span { display: none; }
+  .rcx-sitebar nav { gap: .85rem; }
+  .rcx-sitebar nav a { font-size: .56rem; }
+  .rcx-sitebar nav a:nth-child(3) { display: none; }
+  body.rcx-page .rcx-hero { padding-top: 58px; }
+  body.rcx-page .rcx-hero__topline { top: 4.65rem; }
+  body.rcx-page .rcx-hero__content { padding-top: 9rem; }
+  .rcx-footer { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .rcx-sitebar nav a:nth-child(2) { display: none; }
+}
